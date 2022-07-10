@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let img = UIImage(named: "info.circle")
 
     let headerLabel: UILabel = {
         let date = Date()
