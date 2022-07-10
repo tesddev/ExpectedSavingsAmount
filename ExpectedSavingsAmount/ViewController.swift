@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController {
 
     let headerLabel: UILabel = {
+        let date = Date()
+        let format = date.getFormattedDate(format: "EEEE, MMM d, yyyy")
         let label = UILabel()
-        label.text = "Today's date is \(Date())"
+        label.text = "Today's date is \(format)."
         label.font = .systemFont(ofSize: 18)
         label.textColor = .black
         label.textAlignment = .center
@@ -107,7 +109,7 @@ class ViewController: UIViewController {
     }
     
     func formattedAmount() -> String {
-        let amount = 12345678.9
+        let amount = moneyExpectedToday()
         let amountString = amount.formatted(.currency(code: "NGN"))
         return amountString
     }
