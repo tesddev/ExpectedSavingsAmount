@@ -9,7 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let img = UIImage(named: "info.circle")
+    var infoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "info.circle"), for: .normal)
+        button.tintColor = #colorLiteral(red: 0.5061172843, green: 0.7235409021, blue: 0.5011855364, alpha: 1)
+        button.addTarget(self, action: #selector(didTapInfoButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        return button
+    }()
 
     let headerLabel: UILabel = {
         let date = Date()
@@ -67,16 +76,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.isNavigationBarHidden = true
         constraintViews()
     }
     
     func constraintViews() {
         view.addSubview(headerLabel)
+        view.addSubview(infoButton)
         view.addSubview(instructionTextView)
         view.addSubview(calculateButton)
         view.addSubview(answerLabel)
                 
         NSLayoutConstraint.activate([
+            infoButton.widthAnchor.constraint(equalToConstant: 30),
+            infoButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            infoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
             headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             headerLabel.widthAnchor.constraint(equalToConstant: 270),
             headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -122,6 +137,10 @@ class ViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.answerLabel.text = self?.formattedAmount()
         }
+    }
+    
+    @objc func didTapInfoButton() {
+        navigationController?.pushViewController(InfoViewController(), animated: true)
     }
 }
 
