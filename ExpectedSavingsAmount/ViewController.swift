@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         return shorterCalcOfToday() * 100
     }
     
-    func folokj() -> String {
+    func formattedAmount() -> String {
         let amount = 12345678.9
         let amountString = amount.formatted(.currency(code: "NGN"))
         return amountString
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     @objc func didTapYesButton() {
         print("Yes pressed")
         DispatchQueue.main.async { [weak self] in
-            self?.answerLabel.text = self?.folokj()
+            self?.answerLabel.text = self?.formattedAmount()
         }
     }
 }
