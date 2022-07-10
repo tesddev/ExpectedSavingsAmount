@@ -29,6 +29,7 @@ class InfoViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
         textView.isEditable = false
+        textView.backgroundColor = .white
         return textView
     }()
     
@@ -59,9 +60,6 @@ class InfoViewController: UIViewController {
     @objc func didTapBackButton() {
         navigationController?.popViewController(animated: true)
     }
-
-    
-
 }
 
 class Constants{

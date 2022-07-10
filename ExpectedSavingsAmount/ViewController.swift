@@ -35,13 +35,14 @@ class ViewController: UIViewController {
     
     let instructionTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Press button to see the amount due today"
+        textView.text = "Press button to see the amount due today from Jan 1."
         textView.isEditable = false
         textView.textColor = .black
         textView.font = .systemFont(ofSize: 18)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
         textView.isEditable = false
+        textView.backgroundColor = .white
         return textView
     }()
     
@@ -92,7 +93,7 @@ class ViewController: UIViewController {
             infoButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             infoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
-            headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             headerLabel.widthAnchor.constraint(equalToConstant: 270),
             headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
@@ -133,7 +134,6 @@ class ViewController: UIViewController {
 
     
     @objc func didTapYesButton() {
-        print("Yes pressed")
         DispatchQueue.main.async { [weak self] in
             self?.answerLabel.text = self?.formattedAmount()
         }
