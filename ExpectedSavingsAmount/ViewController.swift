@@ -55,6 +55,8 @@ class ViewController: UIViewController {
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.borderColor = #colorLiteral(red: 0.5061172843, green: 0.7235409021, blue: 0.5011855364, alpha: 1)
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 5
         return label
     }()
     
@@ -81,8 +83,9 @@ class ViewController: UIViewController {
             instructionTextView.heightAnchor.constraint(equalToConstant: 50),
             
             answerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            answerLabel.widthAnchor.constraint(equalToConstant: 270),
+            answerLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            answerLabel.heightAnchor.constraint(equalToConstant: 70),
             
             calculateButton.widthAnchor.constraint(equalToConstant: 150),
             calculateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
